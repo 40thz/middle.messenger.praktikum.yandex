@@ -1,0 +1,23 @@
+.notFound {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+	&-title {
+		color: var(--white);
+		font-size: 40px;
+	}
+	&-subTitle {
+		color: var(--white);
+		font-size: 20px;
+		margin-top: 1rem;
+	}
+	&-btn {
+		cursor: pointer;
+		margin-top: 2rem;
+		color: var(--purple);
+		font-size: 11px;
+	}
+}
