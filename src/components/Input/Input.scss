@@ -1,0 +1,51 @@
+.messenger__field {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	text-align: left;
+
+	&-label {
+		font-size: 9px;
+		color: var(--gray);
+	}
+}
+
+input.messenger__field-input {
+	background-color: transparent;
+	border: 0;
+	border-bottom: 1px solid var(--border);
+	font-size: 0.813rem;
+	padding: 5px 0 5px 0;
+
+	min-width: 280px;
+	color: var(--white);
+}
+
+.messenger__field {
+	&.profile {
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		gap: 16px;
+		border-bottom: 1px solid var(--border);
+
+		input.messenger__field-input {
+			min-width: 1px;
+			border: none;
+			text-align: right;
+			color: var(--gray);
+		}
+	}
+
+	&-label {
+		font-size: 13px;
+		color: var(--white);
+
+	}
+
+	&-error {
+		color: var(--red);
+		font-size: 8px;
+		margin-top: 5px;
+	}
+}
