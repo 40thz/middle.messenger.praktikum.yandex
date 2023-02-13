@@ -1,0 +1,12 @@
+.messenger__button {
+	transition: all 0.2s;
+	cursor: pointer;
+	border-radius: 8px;
+	background: var(--purple);
+	padding: 10px 20px;
+	color: var(--white);
+	font-size: 0.813rem;
+	&:hover {
+		opacity: 0.8;
+	}
+}

@@ -1,0 +1,27 @@
+@import url('./vars.scss');
+@import url('./fonts.scss');
+@import url('./global.scss');
+
+@import url('../components/Input/Input.scss');
+@import url('../components/Button/Button.scss');
+@import url('../components/Link/Link.scss');
+@import url('../components/RoundBtn/RoundBtn.scss');
+
+//UI
+@import url('../styles/ui/dropdown.scss');
+@import url('../styles/ui/modal.scss');
+
+//404
+@import url('../pages/NotFound/NotFound.scss');
+
+//Home
+@import url('../pages/Home/Home.scss');
+@import url('../components/Home/Search/Search.scss');
+@import url('../components/Home/ChatCart/ChatCart.scss');
+@import url('../components/Home/Chat/Chat.scss');
+@import url('../components/Home/Chat/HeaderChat/HeaderChat.scss');
+@import url('../components/Home/Chat/Message/Message.scss');
+@import url('../components/Home/Sendmessage/Sendmessage.scss');
+
+//Profile
+@import url('../pages/Profile/Profile.scss');

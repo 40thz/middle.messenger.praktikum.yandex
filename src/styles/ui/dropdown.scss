@@ -1,0 +1,37 @@
+.menu__elem {
+	cursor: pointer;
+	position: relative;
+	transition: all 0.3s;
+	&.active {
+		.menu__elem-dropdown {
+			display: flex;
+		}
+	}
+	&-dropdown {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		position: absolute;
+		min-width: 250px;
+		top: 30px;
+		right: 0;
+		background: var(--border);
+		border-radius: 12px;
+		padding: 15px;
+		&-item {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+			font-size: 12px;
+			color: var(--white);
+			&:hover {
+				opacity: 0.8;
+			}
+		}
+	}
+	&:hover {
+		.menu__elem-dropdown {
+			display: flex;
+		}
+	}
+}

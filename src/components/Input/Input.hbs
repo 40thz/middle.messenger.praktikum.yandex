@@ -1,0 +1,12 @@
+{{#if profile}}
+<div class='messenger__field profile'>
+	<label class='messenger__field-label'>{{placeholder}}</label>
+	<input class='messenger__field-input' type="{{type}}" name="{{name}}"value="{{value}}" {{#if disabled}} disabled {{/if}}/>
+</div>
+{{else}}
+<div class='messenger__field'>
+	<label class='messenger__field-label'>{{placeholder}}</label>
+	<input class='messenger__field-input' type={{type}} name={{name}} />
+	<div class="messenger__field-error">{{error}}</div>
+</div>
+{{/if}}

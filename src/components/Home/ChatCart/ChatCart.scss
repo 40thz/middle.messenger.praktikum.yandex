@@ -1,0 +1,58 @@
+.messenger__home-sidebar-chats-chat {
+	cursor: pointer;
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 12px 25px 12px 25px;
+	border-top: 1px solid var(--border);
+
+	&-avatar {
+		width: 47px;
+		height: 47px;
+		border-radius: 100%;
+		background: var(--border);
+		overflow: hidden;
+		
+	}
+	&-content {
+		flex-grow: 1;
+	}
+	&-title {
+		margin-bottom: 10px;
+	}
+	&-title,
+	&-info {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&-name {
+		color: var(--white);
+	}
+	&-date {
+		font-size: 9px;
+		color: var(--gray);
+	}
+	&-text {
+		font-size: 12px;
+		color: var(--gray);
+	}
+	&-badge {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 0.5rem;
+		color: var(--white);
+		background: var(--purple);
+		font-size: 11px;
+		width: 12px;
+		height: 12px;
+		border-radius: 100%;
+	}
+	&:first-child {
+		border-top: 0px;
+	}
+	&:hover {
+		background: var(--black);
+	}
+}

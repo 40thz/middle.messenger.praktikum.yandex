@@ -1,0 +1,27 @@
+<div class="modal" style="display: none">
+    <div class="modal__body">
+        <form class="profile__avatarModal">
+            <div class="profile__avatarModal-title">
+                Загрузите файл
+            </div>
+            <input type='file' id="getFile" style="display:none">
+            <div class="profile__avatarModal-upload" onclick="document.getElementById('getFile').click()">
+                Выбрать файл на компьютере
+            </div>
+            <div>
+                {{> Button value="Сохранить" }}
+                <div class="profile__avatarModal-error">Нужно выбрать файл</div>
+            </div>
+        </form>
+    </div>
+    <div class="modal__body">
+        <form class="profile__avatarModal">
+            <div class="profile__avatarModal-title">
+                Удалить пользователя
+            </div>
+            {{> Input type="text" name="login" placeholder="Логин"}}
+            {{> Button value="Удалить" }}
+        </form>
+    </div>
+
+</div>

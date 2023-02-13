@@ -1,0 +1,9 @@
+a.messenger-link {
+	cursor: pointer;
+	transition: all 0.2s;
+	color: var(--purple);
+	font-size: 0.688rem;
+	&:hover {
+		opacity: 0.8;
+	}
+}
