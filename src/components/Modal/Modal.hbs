@@ -1,26 +1,26 @@
 <div class="modal" style="display: none">
     <div class="modal__body">
         <form class="profile__avatarModal">
-            <div class="profile__avatarModal-title">
+            <h1 class="profile__avatarModal-title">
                 Загрузите файл
-            </div>
-            <input type='file' id="getFile" style="display:none">
-            <div class="profile__avatarModal-upload" onclick="document.getElementById('getFile').click()">
-                Выбрать файл на компьютере
-            </div>
+            </h1>
+            <input name="avatar" type='file' id="getFile" style="display:none">
+            <p class="profile__avatarModal-upload" onclick="document.getElementById('getFile').click()">
+              Выбрать файл на компьютере
+            </p>
             <div>
-                {{> Button value="Сохранить" }}
-                <div class="profile__avatarModal-error">Нужно выбрать файл</div>
+                {{> Button type="submit" value="Сохранить" }}
+                <p class="profile__avatarModal-error">Нужно выбрать файл</p>
             </div>
         </form>
     </div>
     <div class="modal__body">
         <form class="profile__avatarModal">
-            <div class="profile__avatarModal-title">
+            <h1 class="profile__avatarModal-title">
                 Удалить пользователя
-            </div>
-            {{> Input type="text" name="login" placeholder="Логин"}}
-            {{> Button value="Удалить" }}
+            </h1>
+            {{> Input name="login" type="text" name="login" placeholder="Логин"}}
+            {{> Button type="submit" value="Удалить" }}
         </form>
     </div>
 

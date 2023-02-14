@@ -1,13 +1,11 @@
-{{!-- {{!< layout }} --}}
-
 <section id="signin">
     <div class="messenger__window">
-        <div class="messenger__window-title">Вход</div>
+        <h1 class="messenger__window-title">Вход</h1>
         <form class="messenger__window-inner">
             {{> Input name='login' type='text' placeholder="Логин" error="Неверный логин"}}
             {{> Input name='password' type='password' placeholder="Пароль"}}
             <div class="messenger__window-inner-controls">
-                {{> Button value="Авторизоваться"}}
+                {{> Button type="submit" value="Авторизоваться"}}
                 {{> Link onClick="goToPage('SignUp')" value="Нет аккаунта?"}}
             </div>
         </form>
