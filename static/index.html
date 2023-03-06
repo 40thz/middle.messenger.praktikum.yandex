@@ -7,6 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Messenger</title>
 	<link rel="stylesheet" href="../src/styles/index.scss" />
+<<<<<<< HEAD
 	<script type="module" src="../src/modules/index.js"></script>
 </head>
 
@@ -19,6 +20,19 @@
 		<div onclick="goToPage('NotFound')">404</div>
 		<div onclick="goToPage('Error')">500</div>
 		<div onclick="document.querySelector('.modal').style.display = 'flex'">Модалки</div>
+=======
+	<script type="module" src="../src/modules/index.ts"></script>
+</head>
+
+<body>
+	<div class="menu">
+		<div onclick="goToPage('signin')">Авторизация</div>
+		<div onclick="goToPage('signup')">Регистрация</div>
+		<div onclick="goToPage('home')">Чаты</div>
+		<div onclick="goToPage('profile')">Профиль</div>
+		<div onclick="goToPage('notFound')">404</div>
+		<div onclick="goToPage('error')">500</div>
+>>>>>>> sprint_2
 	</div>
 	<div id="app"></div>
 </body>

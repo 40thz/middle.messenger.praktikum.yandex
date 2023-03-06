@@ -1,6 +1,7 @@
 {
 	"name": "messenger",
 	"version": "1.0.0",
+<<<<<<< HEAD
 	"description": "",
 	"scripts": {
 		"dev": "parcel static/index.html --port 3000",
@@ -17,3 +18,32 @@
 		"parcel": "^2.8.3"
 	}
 }
+=======
+	"description": "messenger",
+	"scripts": {
+		"dev": "parcel static/index.html --port 3000",
+		"build": "parcel build static/index.html",
+		"lint": "eslint ./src"
+	},
+	"keywords": [],
+	"author": "Stanislav",
+	"license": "ISC",
+	"devDependencies": {
+		"@anikin/parcel-transformer-handlebars-precompile": "1.0.1",
+		"@parcel/transformer-sass": "2.8.3",
+		"@types/handlebars": "4.1.0",
+		"@types/node": "18.14.1",
+		"@typescript-eslint/eslint-plugin": "5.54.0",
+		"@typescript-eslint/parser": "5.54.0",
+		"eslint": "8.35.0",
+		"express": "4.18.2",
+		"handlebars": "4.7.7",
+		"parcel": "2.8.3",
+		"typescript": "4.9.5"
+	},
+	"dependencies": {
+		"nanoid": "4.0.1",
+		"uuid": "9.0.0"
+	}
+}
+>>>>>>> sprint_2

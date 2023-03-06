@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {{> HeaderChat name='Андрей'}}
 <div class="messenger__home-content-chat-container">
 	<div class="messenger__home-content-chat">
@@ -17,3 +18,15 @@
 	</div>	
 </div>
 {{> Sendmessage}}
+=======
+{{{header}}}
+<div class="messenger__home-content-chat-container">
+	<div class="messenger__home-content-chat">
+		{{#each chatMessages}}
+		{{{this}}}
+		{{/each}}
+	</div>
+</div>
+{{{sendMessage}}}
+{{!-- {{> Sendmessage}} --}}
+>>>>>>> sprint_2
