@@ -1,0 +1,31 @@
+{{#if isProfile}}
+{{{avatar}}}
+<div class="messenger__window">
+    {{#each labels}}
+    {{{this}}}
+    {{/each}}
+    {{#if actions}}
+    <div class="messenger__window-inner-controls">
+        {{#each actions}}
+        <div class="messenger__window-inner-controls-link">
+            {{{this}}}
+        </div>
+        {{/each}}
+    </div>
+    {{/if}}
+</div>
+<div class="profile__window-btn">
+    {{{button}}}
+</div>
+{{else}}
+{{#each labels}}
+{{{this}}}
+{{/each}}
+<div class="messenger__window-inner-controls">
+    {{#if actions}}
+    {{#each actions}}
+    {{{this}}}
+    {{/each}}
+    {{/if}}
+</div>
+{{/if}}
