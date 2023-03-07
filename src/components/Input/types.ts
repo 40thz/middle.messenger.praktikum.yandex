@@ -1,3 +1,5 @@
+import { IEvents } from "../../types"
+
 export interface IInput {
   className?: string
   name: string,
@@ -5,7 +7,7 @@ export interface IInput {
   value?: string,
   placeholder?: string,
   disabled?: boolean
-  events?: any
+  events?: IEvents
   hidden?: boolean
   isProfile?: boolean
 }

@@ -1,7 +1,7 @@
-import ChatCart from "../ChatCart"
+import chatcart from "../ChatCart"
 
 export interface ISidebar {
     children: {
-        chats: ChatCart[]
+        chats: chatcart[]
     }
 }

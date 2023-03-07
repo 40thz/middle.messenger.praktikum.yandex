@@ -1,24 +1,4 @@
-.messenger__field {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    text-align: left;
 
-    &-label {
-        font-size: 9px;
-        color: var(--gray);
-    }
-
-    &.error {
-        .messenger__field-error {
-            display: block;
-        }
-    }
-
-    &-error {
-        display: none;
-    }
-}
 
 input.messenger__field-input {
     background-color: transparent;
@@ -31,6 +11,20 @@ input.messenger__field-input {
 }
 
 .messenger__field {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    text-align: left;
+    &-label {
+        font-size: 14px;
+        color: var(--gray);
+    }
+    &-error {
+        display: none;
+        color: var(--red);
+        font-size: 8px;
+        margin-top: 5px;
+    }
     &.profile {
         display: grid;
         grid-template-columns: .9fr 1fr;
@@ -56,14 +50,12 @@ input.messenger__field-input {
         }
     }
 
-    &-label {
-        font-size: 13px;
-        color: var(--white);
-    }
+  
 
-    &-error {
-        color: var(--red);
-        font-size: 8px;
-        margin-top: 5px;
+    &.error {
+        .messenger__field-error {
+            display: block;
+        }
     }
+   
 }

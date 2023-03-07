@@ -1,7 +1,7 @@
-import ChatMessage from "./Message"
+import chatmessage from "./Message"
 
 export interface IChat {
     children: {
-        chatMessages: ChatMessage[]
+        chatMessages: chatmessage[]
     }
 }

@@ -126,9 +126,17 @@ class Component {
     return this._element
   }
 
+  _removeEvents(): void {
+    const { events = {} } = this.props
+
+    Object.keys(events).forEach((eventName: string) => {
+      this._element!.removeEventListener(eventName, events[eventName])
+    })
+  }
+
   private _render() {
     const fragment = this.render()
-
+    this._removeEvents()
     this._element!.innerHTML = ''
 
     this._element!.append(fragment)
