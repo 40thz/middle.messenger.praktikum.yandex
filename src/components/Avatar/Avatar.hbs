@@ -1,11 +1,11 @@
-<div class="profile__window-avatar">
-    <div class="profile__window-avatar-image">
-        <img src="{{img}}" alt="Изображение профиля">
-    </div>
-    <p class="profile__window-avatar-change">
-        Поменять<br />аватар
-    </p>
+<div class='profile__window-avatar'>
+  <div class='profile__window-avatar-image'>
+    <img src='{{img}}' alt='Изображение профиля' />
+  </div>
+  {{#if isAdmin}}
+    {{{changeInput}}}
+  {{/if}}
 </div>
 
-<p class="profile__window-name">{{name}}</p>
+<p class='profile__window-name'>{{name}}</p>
 {{modal}}

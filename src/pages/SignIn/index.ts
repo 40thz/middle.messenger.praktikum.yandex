@@ -1,12 +1,12 @@
 import Button from '../../components/Button'
-import Component from '../../utils/Component'
+import Component from '../../modules/Component'
 import Form from '../../components/Form'
+import { ISignIn } from '../../services/auth.service/types'
 import Label from '../../components/Label'
 import Link from '../../components/Link'
-
 import { SIGNIN_INPUTS } from '../../constants/SignIn'
-import { renderDom } from '../../utils/renderDom'
-
+import authController from '../../controllers/auth.controller'
+import router from '../../modules/Router/router'
 import template from './SignIn.hbs'
 
 class SignIn extends Component {
@@ -20,14 +20,8 @@ class SignIn extends Component {
     this.children.form = new Form({
       className: 'messenger__window-inner',
       events: {
-        submit: (e: Event) => {
-          e.preventDefault()
-          e.preventDefault();
-          (<Form>this.children.form).isValid();
-          (<Form>this.children.form).logData()
-        },
+        submit: (e) => this.onSubmit(e),
       },
-
       children: {
         labels: SIGNIN_INPUTS.map((input) => new Label(input)),
         actions: [
@@ -39,13 +33,25 @@ class SignIn extends Component {
             color: '#6d3ed1',
             events: {
               click: () => {
-                renderDom('signup')
+                router.go('/signup')
               },
             },
           }),
         ],
       },
     })
+  }
+
+  onSubmit(e) {
+    e.preventDefault()
+
+    const form: Form = this.children.form as Form
+
+    if (form.isValid()) {
+      const data = form.data
+
+      authController.signin(data as ISignIn)
+    }
   }
 
   render() {

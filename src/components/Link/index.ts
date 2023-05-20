@@ -1,9 +1,9 @@
-import Component from '../../utils/Component'
+import Component from '../../modules/Component'
 import { ILink } from './types'
 
 import template from './Link.hbs'
 
-class Link extends Component {
+class Link extends Component<ILink> {
   constructor(props: ILink) {
     super('a', props)
   }

@@ -5,13 +5,15 @@
 	justify-content: space-between;
 	align-items: center;
 	gap: 2rem;
-	padding: 0px 25px 1rem 25px;
+	padding: 0 25px 1rem;
 	border-bottom: 1px solid var(--border);
 	background: var(--dark);
 	padding-top: 20px;
+
 	&-input {
 		position: relative;
 		flex-grow: 1;
+
 		input {
 			padding: 0.7rem 1rem 0.7rem 2rem;
 			width: 100%;
@@ -21,6 +23,7 @@
 			border-radius: 5px;
 			font-size: 0.813rem;
 		}
+
 		&-icon {
 			position: absolute;
 			top: 50%;
@@ -28,6 +31,7 @@
 			transform: translateY(-50%);
 		}
 	}
+
 	.menu__elem-dropdown {
 		right: initial;
 		left: 0;

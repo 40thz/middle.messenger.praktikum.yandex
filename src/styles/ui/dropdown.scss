@@ -2,19 +2,9 @@
 	cursor: pointer;
 	position: relative;
 	transition: all 0.3s;
-<<<<<<< HEAD
-	&.active {
-		.menu__elem-dropdown {
-			display: flex;
-		}
-	}
-	&-dropdown {
-		display: flex;
-=======
 
 	&-dropdown {
 		display: none;
->>>>>>> sprint_2
 		flex-direction: column;
 		gap: 1rem;
 		position: absolute;
@@ -24,37 +14,23 @@
 		background: var(--border);
 		border-radius: 12px;
 		padding: 15px;
-<<<<<<< HEAD
-=======
 
->>>>>>> sprint_2
 		&-item {
 			display: flex;
 			align-items: center;
 			gap: 1rem;
 			font-size: 12px;
 			color: var(--white);
-<<<<<<< HEAD
-=======
 
->>>>>>> sprint_2
 			&:hover {
 				opacity: 0.8;
 			}
 		}
 	}
-<<<<<<< HEAD
-	&:hover {
-=======
 
 	&.active {
->>>>>>> sprint_2
 		.menu__elem-dropdown {
 			display: flex;
 		}
 	}
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> sprint_2

@@ -1,137 +1,99 @@
-//import Button from '../../components/Button'
-import Button from '../../components/Button'
-import Component from '../../utils/Component'
-
+import Component from '../../modules/Component'
 import Form from '../../components/Form'
-
+import { IProfilePage } from './types'
 import Label from '../../components/Label'
 import Link from '../../components/Link'
-// eslint-disable-next-line sort-imports
-import { PASSWORD_INPUTS, PROFILE_INPUTS } from '../../constants/Profile'
-
+import { PROFILE_INPUTS } from '../../constants/Profile'
 import RoundBtn from '../../components/RoundBtn'
-
-import { renderDom } from '../../utils/renderDom'
-
+import authController from '../../controllers/auth.controller'
+import router from '../../modules/Router/router'
 import template from './Profile.hbs'
+import { withStore } from '../../hoc/withStore'
 
-class Profile extends Component {
-    constructor() {
-        super('main')
+class Profile extends Component<IProfilePage> {
+  constructor(props: IProfilePage) {
+    super('main', { ...props })
+  }
+
+  // componentDidMount() {
+  //   authController.fetchUser().catch(() => router.go('/'))
+  // }
+
+  componentDidUpdate() {
+    this.element.id = 'profile'
+    const user = this.props.user
+
+    if (user.isLoading) {
+      return
     }
 
-    init() {
-        this.element.id = 'profile'
-        this.children.roundBtn = new RoundBtn({
+    this.children.roundBtn = new RoundBtn({
+      events: {
+        click: () => {
+          router.back()
+        },
+      },
+    })
+
+    this.children.form = new Form({
+      className: 'profile__window',
+      avatar: user.data.avatar,
+      name: user.data.first_name,
+      isProfile: true,
+
+      children: {
+        labels: PROFILE_INPUTS.map(
+          (input) =>
+            new Label({
+              ...input,
+              isProfile: true,
+              disabled: true,
+              value: user.data[input.name],
+            })
+        ),
+
+        actions: [
+          new Link({
+            value: 'Изменить данные',
+            color: '#6d3ed1',
             events: {
-                click: () => {
-                    renderDom('home')
-                }
-            }
-        })
-        this.children.form = new Form({
-            className: 'profile__window',
-            isProfile: true,
+              click: () => {
+                router.go('/profile/change-profile')
+              },
+            },
+          }),
+
+          new Link({
+            value: 'Изменить пароль',
+            color: '#6d3ed1',
             events: {
-                submit: (e: Event) => {
-                    e.preventDefault()
-                    if ((<Form>this.children.form).isValid()) {
-                        (<Form>this.children.form).logData()
-                        // renderDom('home')
-                    }
-                },
+              click: () => {
+                router.go('/profile/change-password')
+              },
             },
+          }),
 
-            children: {
-                labels: PROFILE_INPUTS.map((input) => new Label({ ...input, isProfile: true, disabled: true })),
-                actions: [
-                    new Link({
-                        value: 'Изменить данные',
-                        color: '#6d3ed1',
-                        events: {
-                            click: () => {
-                                this.getChangeForm()
-                            }
-                        }
-                    }),
-                    new Link({
-                        value: 'Изменить пароль',
-                        color: '#6d3ed1',
-                        events: {
-                            click: () => {
-                                this.getChangePasswordForm()
-                            }
-                        }
-                    }),
-                    new Link({
-                        value: 'Выйти',
-                        color: '#C74141',
-                        events: {
-                            click: () => {
-                                renderDom('signin')
-                            }
-                        }
-                    })
-                ],
+          new Link({
+            value: 'Выйти',
+            color: '#C74141',
+            events: {
+              click: () => {
+                authController.logout()
+              },
             },
-        })
-    }
+          }),
+        ],
+      },
+    })
 
-    getChangeForm() {
-        this.setProps({
-            children: {
-                form: new Form({
-                    className: 'profile__window',
-                    isProfile: true,
-                    events: {
-                        submit: (e: Event) => {
-                            e.preventDefault();
-                            (<Form>this.children.form).isValid();
-                            (<Form>this.children.form).logData()
-                        },
-                    },
-                    children: {
-                        labels: PROFILE_INPUTS.map((input) => new Label({ ...input, isProfile: true, disabled: false })),
-                        actions: [],
-                        button: new Button({
-                            value: 'Сохронить'
-                        })
-                    },
-                })
-            }
-        })
-    }
+    return true
+  }
 
-    getChangePasswordForm() {
-        this.setProps({
-            children: {
-                form: new Form({
-                    className: 'profile__window',
-                    isProfile: true,
-                    events: {
-                        submit: (e: Event) => {
-                            e.preventDefault();
-                            (<Form>this.children.form).isValid();
-                            (<Form>this.children.form).logData()
-                        },
-                    },
-                    children: {
-                        labels: PASSWORD_INPUTS.map((input) => new Label({ ...input, isProfile: true, disabled: false })),
-                        actions: [],
-                        button: new Button({
-                            value: 'Сохронить'
-                        })
-                    },
-                })
-            }
-        })
-    }
-
-    render() {
-        if (this.props.children) { this.children = { ...this.children, ...this.props.children } }
-
-        return this.compile(template, this.props)
-    }
+  render() {
+    return this.compile(template, this.props)
+  }
 }
 
-export default Profile
+export const ProfilePage = withStore((state) => {
+  return { user: state.user }
+})(Profile as any)

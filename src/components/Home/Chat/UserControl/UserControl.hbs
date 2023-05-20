@@ -1,6 +1,13 @@
-<div class="profile__avatarModal-title">
-    {{name}}
+<div class='profile__avatarModal-title'>
+  {{name}}
 </div>
 
 {{{input}}}
+{{#if users}}
+  <div class='user-scroll'>
+    {{#each users}}
+      {{{this}}}
+    {{/each}}
+  </div>
+{{/if}}
 {{{button}}}

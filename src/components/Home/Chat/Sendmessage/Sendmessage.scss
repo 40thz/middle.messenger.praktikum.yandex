@@ -4,6 +4,7 @@
 		gap: 1rem;
 		display: flex;
 		align-items: center;
+
 		.menu__elem-dropdown {
 			min-width: 200px;
 			top: initial;
@@ -11,13 +12,14 @@
 			left: 0;
 		}
 	}
+
 	&-input {
 		flex-grow: 1;
 		input {
 			width: 100%;
 			color: var(--gray);
 			background: var(--border);
-			border: 0px;
+			border: 0;
 			border-radius: 5px;
 			padding: 0.7rem 1rem 0.7rem 2rem;
 			font-size: 0.813rem;

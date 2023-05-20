@@ -1,10 +1,9 @@
-import Button from "./Button"
-import { IEvents } from "../../types"
+import Button from './Button'
+import { DefaultProps } from '../../modules/Component/types'
 
-export interface IDropdown {
-    icon: string
-    children: {
-        buttons: Button[]
-    }
-    events?: IEvents
+export interface IDropdown extends DefaultProps {
+  icon: string
+  children: {
+    buttons: Button[]
+  }
 }

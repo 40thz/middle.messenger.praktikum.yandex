@@ -4,31 +4,22 @@
     height: 100vh;
     top: 0;
     left: 0;
-<<<<<<< HEAD
-    background: rgba($color: #2B2B2B, $alpha: 0.6);
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-=======
-    display: flex;
-    background: rgba($color: #2B2B2B, $alpha: 0.6);
+    background: rgba($color: #2B2B2B, $alpha: 60%);
     justify-content: center;
     align-items: center;
     gap: 30px;
     z-index: 5000;
->>>>>>> sprint_2
+
     &__body {
         background: var(--dark);
-        box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.14);
+        box-shadow: 0 0 6px rgb(0 0 0 / 14%);
         border-radius: 12px;
         max-width: 340px;
         width: 100%;
         padding: 40px;
         box-sizing: border-box;
     }
-<<<<<<< HEAD
-=======
 
     &.hide {
         display: none;
@@ -37,5 +28,4 @@
     .messenger__field-input {
         min-width: 280px;
     }
->>>>>>> sprint_2
 }

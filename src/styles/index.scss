@@ -10,6 +10,8 @@
 //UI
 @import url('../styles/ui/dropdown.scss');
 @import url('../styles/ui/modal.scss');
+@import url('../styles/ui/modal.scss');
+@import url('../components/MessengerLoader/MessengerLoader.scss');
 
 //404
 @import url('../pages/NotFound/NotFound.scss');
@@ -21,11 +23,8 @@
 @import url('../components/Home/Chat/Chat.scss');
 @import url('../components/Home/Chat/HeaderChat/HeaderChat.scss');
 @import url('../components/Home/Chat/Message/Message.scss');
-<<<<<<< HEAD
-@import url('../components/Home/Sendmessage/Sendmessage.scss');
-=======
 @import url('../components/Home/Chat/Sendmessage/Sendmessage.scss');
->>>>>>> sprint_2
+@import url('../components/UserCart/UserCart.scss');
 
 //Profile
 @import url('../pages/Profile/Profile.scss');
