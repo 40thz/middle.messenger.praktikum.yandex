@@ -1,7 +1,6 @@
-import { IEvents } from "../../../types"
+import { DefaultProps } from '../../../modules/Component/types'
 
-export interface IButton {
-  icon?: string,
-  name: string,
-  events?: IEvents
+export interface IButton extends DefaultProps {
+  icon?: string
+  name?: string
 }

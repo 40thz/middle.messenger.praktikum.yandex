@@ -1,9 +1,9 @@
-import Component from '../../utils/Component'
-import { IbtnUpload } from './types'
+import Component from '../../modules/Component'
+import { IBtnUpload } from './types'
 import template from './btnUpload.hbs'
 
-class btnUpload extends Component {
-  constructor(props: IbtnUpload) {
+class btnUpload extends Component<IBtnUpload> {
+  constructor(props: IBtnUpload) {
     super('div', props)
   }
 

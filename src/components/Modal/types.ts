@@ -1,9 +1,9 @@
-import Component from "../../utils/Component"
-import { IEvents } from "../../types"
+import Component from '../../modules/Component'
+import { IEvents } from '../../types'
 
 export interface IModal {
-    children?: {
-        body: Component
-    },
-    events?: IEvents
+  children?: {
+    body: Component
+  }
+  events?: IEvents
 }

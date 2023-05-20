@@ -1,20 +1,30 @@
-import Component from '../../utils/Component'
+import Component from '../../modules/Component'
 import { IModal } from './types'
 
 import template from './Modal.hbs'
 
 class Modal extends Component {
   constructor(props: IModal) {
-    super('div', props)
+    super('div', { ...props })
+  }
+
+  protected componentDidUpdate() {
+    if (this.props.children) {
+      this.children = this.props.children
+    }
+
+    return true
   }
 
   init() {
     this.element.classList.add('modal', 'hide')
 
     this.props.events = {
-      click: (e) => {
+      click: (e: Event) => {
+        e.stopPropagation()
+
         const modalBody = this.element.querySelector('.modal__body')
-        if (!modalBody.contains(e.target)) {
+        if (!modalBody.contains(e.target as Node)) {
           this.close()
         }
       },
@@ -22,16 +32,17 @@ class Modal extends Component {
   }
 
   open() {
+    console.log('modal open')
     this.element.classList.remove('hide')
   }
 
   close() {
+    console.log('modal close')
     this.element.classList.add('hide')
   }
 
   render() {
-    this.children = { ...this.props.children }
-    return this.compile(template, { ...this.props.children })
+    return this.compile(template, this.props)
   }
 }
 

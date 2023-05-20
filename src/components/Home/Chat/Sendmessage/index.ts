@@ -1,5 +1,5 @@
 import Button from '../../../Dropdown/Button'
-import Component from '../../../../utils/Component'
+import Component from '../../../../modules/Component'
 import Dropdown from '../../../Dropdown'
 import FileUploadForm from '../../../FileUploadForm'
 import Input from '../../../Input'
@@ -29,8 +29,9 @@ class Sendmessage extends Component {
             name: 'Фото или Видео',
             events: {
               click: () => {
-                (<Modal>this.children.modal).open()
-                this.children.modal.setProps({
+                const modal: Modal = this.children.modal as Modal
+                modal.open()
+                modal.setProps({
                   children: {
                     body: new FileUploadForm({}),
                   },
@@ -43,8 +44,9 @@ class Sendmessage extends Component {
             name: 'Файл',
             events: {
               click: () => {
-                (<Modal>this.children.modal).open()
-                this.children.modal.setProps({
+                const modal: Modal = this.children.modal as Modal
+                modal.open()
+                modal.setProps({
                   children: {
                     body: new FileUploadForm({}),
                   },
@@ -57,8 +59,9 @@ class Sendmessage extends Component {
             name: 'Локация',
             events: {
               click: () => {
-                (<Modal>this.children.modal).open()
-                this.children.modal.setProps({
+                const modal: Modal = this.children.modal as Modal
+                modal.open()
+                modal.setProps({
                   children: {
                     body: new FileUploadForm({}),
                   },

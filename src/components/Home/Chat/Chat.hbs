@@ -1,10 +1,15 @@
-{{{header}}}
-<div class="messenger__home-content-chat-container">
-	<div class="messenger__home-content-chat">
-		{{#each chatMessages}}
-		{{{this}}}
-		{{/each}}
-	</div>
-</div>
-{{{sendMessage}}}
+{{#if activeChat}}
+  {{{header}}}
+  <div class='messenger__home-content-chat-container'>
+    <div class='messenger__home-content-chat'>
+      {{#each messages}}
+        {{{this}}}
+      {{/each}}
+    </div>
+  </div>
+  {{{sendMessage}}}
+{{else}}
+  {{{chatIsNotFound}}}
+{{/if}}
+
 {{!-- {{> Sendmessage}} --}}

@@ -7,7 +7,7 @@ const EMAIL = {
   required: true,
   value: 'pochta@yandex.ru',
   regex: REGEXES.email,
-  error_text: ERROR_MESSAGES.email
+  error_text: ERROR_MESSAGES.email,
 }
 
 const LOGIN = {
@@ -16,7 +16,7 @@ const LOGIN = {
   required: true,
   value: 'ivanivanov',
   regex: REGEXES.login,
-  error_text: ERROR_MESSAGES.login
+  error_text: ERROR_MESSAGES.login,
 }
 
 const FIRST_NAME = {
@@ -24,7 +24,7 @@ const FIRST_NAME = {
   label: 'Имя',
   value: 'Иван',
   regex: REGEXES.name,
-  error_text: ERROR_MESSAGES.name
+  error_text: ERROR_MESSAGES.name,
 }
 
 const SECOND_NAME = {
@@ -32,7 +32,7 @@ const SECOND_NAME = {
   label: 'Фамилия',
   value: 'Иванов',
   regex: REGEXES.name,
-  error_text: ERROR_MESSAGES.name
+  error_text: ERROR_MESSAGES.name,
 }
 
 const DISPLAY_NAME = {
@@ -40,7 +40,7 @@ const DISPLAY_NAME = {
   label: 'Имя в чате',
   value: 'Иван',
   regex: REGEXES.name,
-  error_text: ERROR_MESSAGES.name
+  error_text: ERROR_MESSAGES.name,
 }
 
 const PHONE = {
@@ -48,16 +48,25 @@ const PHONE = {
   label: 'Телефон',
   value: '+79099673030',
   regex: REGEXES.phone,
-  error_text: ERROR_MESSAGES.phone
+  error_text: ERROR_MESSAGES.phone,
 }
 
 const OLD_PASSWORD = {
-  name: 'old_password',
+  name: 'oldPassword',
   type: 'password',
   label: 'Пароль',
   required: true,
   regex: REGEXES.password,
-  error_text: ERROR_MESSAGES.password
+  error_text: ERROR_MESSAGES.password,
+}
+
+const NEW_PASSWORD = {
+  name: 'newPassword',
+  type: 'password',
+  label: 'Пароль',
+  required: true,
+  regex: REGEXES.password,
+  error_text: ERROR_MESSAGES.password,
 }
 
 const PASSWORD = {
@@ -66,7 +75,7 @@ const PASSWORD = {
   label: 'Пароль',
   required: true,
   regex: REGEXES.password,
-  error_text: ERROR_MESSAGES.password
+  error_text: ERROR_MESSAGES.password,
 }
 
 const REPEAT_PASSWORD = {
@@ -75,9 +84,8 @@ const REPEAT_PASSWORD = {
   label: 'Повторите пароль',
   required: true,
   regex: REGEXES.password,
-  error_text: ERROR_MESSAGES.password
+  error_text: ERROR_MESSAGES.password,
 }
-
 
 export const PROFILE_INPUTS = [
   EMAIL,
@@ -85,11 +93,7 @@ export const PROFILE_INPUTS = [
   FIRST_NAME,
   SECOND_NAME,
   DISPLAY_NAME,
-  PHONE
+  PHONE,
 ]
 
-export const PASSWORD_INPUTS = [
-  OLD_PASSWORD,
-  PASSWORD,
-  REPEAT_PASSWORD
-]
+export const PASSWORD_INPUTS = [OLD_PASSWORD, NEW_PASSWORD, REPEAT_PASSWORD]

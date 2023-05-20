@@ -1,11 +1,10 @@
 import Avatar from '../Avatar'
-import Component from '../../utils/Component'
+import Component from '../../modules/Component'
 import { IForm } from './types'
-
+import Label from '../Label'
 import template from './Form.hbs'
 
-
-export default class Form extends Component {
+export default class Form extends Component<IForm> {
   constructor(props: IForm) {
     super('form', { ...props })
   }
@@ -16,16 +15,23 @@ export default class Form extends Component {
 
     if (this.props.isProfile)
       this.children.avatar = new Avatar({
-        img: 'https://static.nationalgeographic.co.uk/files/styles/image_3200/public/Mighty-2048.jpg?w=710&h=400',
-        name: 'Андрей'
+        isProfile: true,
+        img: this.props.avatar,
+        name: this.props.name,
+        isAdmin: this.props.isAdmin,
       })
   }
 
   get data() {
-    return (this.children.labels as any).reduce((result, label) => ({
-      ...result,
-      ...{ [label.props.props.name]: label.getValue() },
-    }), {})
+    const label: Label[] = this.children.labels as Label[]
+
+    return label.reduce(
+      (result, label: any) => ({
+        ...result,
+        ...{ [label.props.name]: label.getValue() },
+      }),
+      {}
+    )
   }
 
   logData() {
@@ -33,14 +39,19 @@ export default class Form extends Component {
   }
 
   isValid(): boolean {
-    let result = true;
-    (this.children.labels as any).forEach((label) => {
-      result = label.isValid() && result
+    const label: Label[] = this.children.labels as Label[]
+
+    const inputLength = label.length
+    const validateArr = []
+
+    label.forEach((label) => {
+      validateArr.push(label.isValid())
     })
 
-    return result
-  }
+    const vaidateInputs = validateArr.filter((item) => item === false)
 
+    return vaidateInputs.length === inputLength ? true : false
+  }
   render() {
     return this.compile(template, { ...this.props.children, ...this.props })
   }

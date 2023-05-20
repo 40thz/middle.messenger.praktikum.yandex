@@ -1,123 +1,113 @@
-type Primitive =
-    | bigint
-    | boolean
-    | null
-    | number
-    | string
-    | symbol
-    | undefined;
-
-type JSONValue = Primitive | JSONObject | JSONArray;
-
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface JSONArray extends Array<JSONValue> { }
-
-interface JSONObject {
-    [key: string]: JSONValue;
-}
-
-function queryStringify(obj: any, prefix?: string): string {
-    if (typeof obj !== "object") {
-        throw new Error("Query data must be object")
-    }
-    const result: string[] = []
-    Object.keys(obj).forEach((k: string): void => {
-        const key = prefix ? `${prefix}[${k}]` : k
-        const value = obj[key] === null || obj[key] === undefined || Number.isNaN(obj[key]) ? "" : obj[key]
-        result.push(typeof value === "object" ?
-            queryStringify(value, key) :
-            `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
-    })
-    return `${!prefix && "?"}${result.join("&")}`
-}
-
-enum Methods {
-    GET = "GET",
-    POST = "POST",
-    PUT = "PUT",
-    DELETE = "DELETE"
+export enum Method {
+  Get = 'Get',
+  Post = 'Post',
+  Put = 'Put',
+  Patch = 'Patch',
+  Delete = 'Delete',
 }
 
 type Options = {
-    headers?: Record<string, string>;
-    method?: Methods;
-    timeout?: number;
-    data?: JSONObject;
-};
-
-type HTTPMethod = (url: string, options?: Omit<Options, "method">) => Promise<XMLHttpRequest>;
-
-export default class HTTPTransport {
-    get: HTTPMethod = (
-        url,
-        options = {}
-    ) => this.request(url, { ...options, method: Methods.GET })
-
-    post: HTTPMethod = (
-        url,
-        options = {}
-    ) => this.request(url, { ...options, method: Methods.POST })
-
-    put: HTTPMethod = (
-        url,
-        options = {}
-    ) => this.request(url, { ...options, method: Methods.PUT })
-
-    delete: HTTPMethod = (
-        url,
-        options = {}
-    ) => this.request(url, { ...options, method: Methods.DELETE })
-
-    request(url: string, options: Options = {}): Promise<XMLHttpRequest> {
-        const {
-            headers = {},
-            method = Methods.GET,
-            timeout = 5000,
-            data
-        } = options
-
-        return new Promise((resolve, reject) => {
-            const xhr = new XMLHttpRequest()
-            const isGet = method === Methods.GET
-
-            xhr.open(method, isGet && !!data ? `${url}${queryStringify(data)}` : url)
-
-            Object.keys(headers).forEach((key: string) => {
-                xhr.setRequestHeader(key, headers[key])
-            })
-
-            xhr.onload = () => {
-                resolve(xhr)
-            }
-
-            xhr.onabort = reject
-            xhr.onerror = reject
-
-            xhr.timeout = timeout
-            xhr.ontimeout = reject
-
-            if (isGet || !data) {
-                xhr.send()
-            } else {
-                xhr.send(JSON.stringify(data))
-            }
-        })
-    }
+  method: Method
+  contentType?: string
+  data?: any
 }
 
-type OptionsWithRetries = Options & {
-    retries: number;
-};
+export default class HTTPTransport {
+  static API_URL = 'https://ya-praktikum.tech/api/v2'
+  protected endpoint: string
 
-export function fetchWithRetry(url: string, options: OptionsWithRetries): Promise<XMLHttpRequest> {
-    const { retries = 5, ...fetchOptions } = options
+  constructor(endpoint: string) {
+    this.endpoint = `${HTTPTransport.API_URL}${endpoint}`
+  }
 
-    function onError() {
-        if (retries === 1) {
-            throw new Error("No retries left")
+  public get<Response>(path = '/', data?: unknown): Promise<Response> {
+    return this.request<Response>(this.endpoint + path, {
+      method: Method.Get,
+      data,
+    })
+  }
+
+  public post<Response = void>(
+    path: string,
+    data?: unknown
+  ): Promise<Response> {
+    return this.request<Response>(this.endpoint + path, {
+      method: Method.Post,
+      data,
+    })
+  }
+
+  public put<Response = void>(
+    path: string,
+    data: unknown,
+    contentType?: string
+  ): Promise<Response> {
+    return this.request<Response>(this.endpoint + path, {
+      method: Method.Put,
+      contentType,
+      data,
+    })
+  }
+
+  public patch<Response = void>(
+    path: string,
+    data: unknown
+  ): Promise<Response> {
+    return this.request<Response>(this.endpoint + path, {
+      method: Method.Patch,
+      data,
+    })
+  }
+
+  public delete<Response>(path: string, data: unknown): Promise<Response> {
+    return this.request<Response>(this.endpoint + path, {
+      method: Method.Delete,
+      data,
+    })
+  }
+
+  private request<Response>(
+    url: string,
+    options: Options = { method: Method.Get }
+  ): Promise<Response> {
+    const { method, data, contentType } = options
+    return new Promise((resolve, reject) => {
+      if (!method) {
+        reject(new Error('No method'))
+        return
+      }
+
+      const xhr = new XMLHttpRequest()
+      xhr.open(method, url)
+
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status < 400) {
+            resolve(xhr.response)
+          } else {
+            reject(xhr.response)
+          }
         }
-        return fetchWithRetry(url, { ...fetchOptions, ...{ retries: retries - 1 } })
-    }
+      }
 
-    return new HTTPTransport().request(url, fetchOptions).catch(onError)
+      xhr.onabort = () => reject({ reason: 'abort' })
+      xhr.onerror = () => reject({ reason: 'network error' })
+      xhr.ontimeout = () => reject({ reason: 'timeout' })
+
+      xhr.withCredentials = true
+      xhr.responseType = 'json'
+      if (contentType === 'FormData') {
+        xhr.send(data)
+        return
+      } else {
+        xhr.setRequestHeader('Content-Type', 'application/json')
+      }
+
+      if (method === Method.Get || !data) {
+        xhr.send()
+      } else {
+        xhr.send(JSON.stringify(data))
+      }
+    })
+  }
 }
