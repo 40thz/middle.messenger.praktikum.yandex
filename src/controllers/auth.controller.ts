@@ -38,10 +38,8 @@ class AuthController {
   async fetchUser() {
     const user = await this.api.read()
 
-    try {
+    if (user) {
       store.set('user.data', user)
-    } catch (e) {
-      console.log(e)
     }
   }
 

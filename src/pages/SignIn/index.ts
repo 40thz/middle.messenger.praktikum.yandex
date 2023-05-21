@@ -17,6 +17,8 @@ class SignIn extends Component {
   }
 
   init() {
+    authController.fetchUser().then(() => router.go('/messenger'))
+
     this.children.form = new Form({
       className: 'messenger__window-inner',
       events: {
