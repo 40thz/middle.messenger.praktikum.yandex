@@ -11,7 +11,7 @@ class Route {
     private readonly blockClass: typeof Component,
     private readonly query: string,
     private readonly isProtected?: boolean
-  ) {}
+  ) { }
 
   leave() {
     this.block = null
