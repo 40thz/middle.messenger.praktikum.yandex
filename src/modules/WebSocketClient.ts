@@ -53,16 +53,17 @@ export class WSTransport extends EventBus {
     })
 
     socket.addEventListener('message', (message) => {
-      const data = JSON.parse(message.data)
+      try {
+        const data = JSON.parse(message.data)
 
-      if (
-        (data.type && data.type === 'pong') ||
-        (data.type && data.type === 'user connected')
-      ) {
-        return
+        if ((data.type && data.type === 'pong') || (data.type && data.type === 'user connected')) {
+          return
+        }
+
+        this.emit(WSEvent.message, data)
+      } catch (e) {
+        console.error(e)
       }
-
-      this.emit(WSEvent.message, data)
     })
 
     socket.addEventListener('close', () => {
