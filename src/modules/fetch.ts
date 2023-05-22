@@ -1,3 +1,5 @@
+import { queryStringify } from '../utils/queryStringify'
+
 export enum Method {
   Get = 'Get',
   Post = 'Post',
@@ -27,21 +29,14 @@ export default class HTTPTransport {
     })
   }
 
-  public post<Response = void>(
-    path: string,
-    data?: unknown
-  ): Promise<Response> {
+  public post<Response = void>(path: string, data?: unknown): Promise<Response> {
     return this.request<Response>(this.endpoint + path, {
       method: Method.Post,
       data,
     })
   }
 
-  public put<Response = void>(
-    path: string,
-    data: unknown,
-    contentType?: string
-  ): Promise<Response> {
+  public put<Response = void>(path: string, data: unknown, contentType?: string): Promise<Response> {
     return this.request<Response>(this.endpoint + path, {
       method: Method.Put,
       contentType,
@@ -49,10 +44,7 @@ export default class HTTPTransport {
     })
   }
 
-  public patch<Response = void>(
-    path: string,
-    data: unknown
-  ): Promise<Response> {
+  public patch<Response = void>(path: string, data: unknown): Promise<Response> {
     return this.request<Response>(this.endpoint + path, {
       method: Method.Patch,
       data,
@@ -66,10 +58,7 @@ export default class HTTPTransport {
     })
   }
 
-  private request<Response>(
-    url: string,
-    options: Options = { method: Method.Get }
-  ): Promise<Response> {
+  private request<Response>(url: string, options: Options = { method: Method.Get }): Promise<Response> {
     const { method, data, contentType } = options
     return new Promise((resolve, reject) => {
       if (!method) {
@@ -78,7 +67,8 @@ export default class HTTPTransport {
       }
 
       const xhr = new XMLHttpRequest()
-      xhr.open(method, url)
+      const isGet = method === Method.Get
+      xhr.open(method, isGet && !!data ? `${url}${queryStringify(data)}` : url)
 
       xhr.onreadystatechange = () => {
         if (xhr.readyState === XMLHttpRequest.DONE) {
