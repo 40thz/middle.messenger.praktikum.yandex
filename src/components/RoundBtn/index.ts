@@ -1,4 +1,4 @@
-import Component from '../../utils/Component'
+import Component from '../../modules/Component'
 import template from './RoundBtn.hbs'
 
 class RoundBtn extends Component {

@@ -5,5 +5,6 @@ declare module '*.hbs'
 declare module '*.svg'
 
 interface Window {
-  goToPage: (value: string) => void;
+  goToPage: (value: string) => void
+  store: any
 }

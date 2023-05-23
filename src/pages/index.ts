@@ -1,15 +1,10 @@
+import { ChangePasswordPage } from './ChangePassword'
+import { ChangeProfilePage } from './ChangeProfile'
+import { HomePage } from './Home'
+import { ProfilePage } from './Profile/'
 import error from './Error/'
-import home from './Home'
 import notFound from './NotFound/'
-import profile from './Profile/'
 import signin from './SignIn/'
 import signup from './SignUp/'
 
-export {
-  error,
-  home,
-  notFound,
-  profile,
-  signin,
-  signup
-}
+export { error, HomePage, notFound, ProfilePage, signin, signup, ChangePasswordPage, ChangeProfilePage }

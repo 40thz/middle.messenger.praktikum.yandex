@@ -1,8 +1,8 @@
-import Component from '../../utils/Component'
+import Component from '../../modules/Component'
 import { IDropdown } from './types'
 import template from './Dropdown.hbs'
 
-class Dropdown extends Component {
+class Dropdown extends Component<IDropdown> {
   constructor(props: IDropdown) {
     super('div', { ...props })
   }
@@ -17,8 +17,8 @@ class Dropdown extends Component {
       events: {
         click: () => {
           this.toggleDropDown()
-        }
-      }
+        },
+      },
     }
 
     // Следим за кликом вне области окна

@@ -1,6 +1,5 @@
-import { IEvents } from "../../types"
+import { DefaultProps } from '../../modules/Component/types'
 
-export interface IbtnUpload {
-    value: string,
-    events?: IEvents
+export interface IBtnUpload extends DefaultProps {
+  value: string
 }

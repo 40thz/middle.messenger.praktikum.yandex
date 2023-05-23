@@ -1,16 +1,26 @@
-
-	<div class='messenger__home-sidebar-chats-chat-avatar'>
-		<img src={{avatar}} alt="{{name}}">
-	</div>
-	<div class='messenger__home-sidebar-chats-chat-content'>
-		<div class='messenger__home-sidebar-chats-chat-title'>
-			<div class='messenger__home-sidebar-chats-chat-name'>{{name}}</div>
-			<div class='messenger__home-sidebar-chats-chat-date'>{{dateTime}}</div>
-		</div>
-		<div class='messenger__home-sidebar-chats-chat-info'>
-			<div class='messenger__home-sidebar-chats-chat-text'>{{value}}</div>
-			{{#if badge}}
-				<div class='messenger__home-sidebar-chats-chat-badge'>{{badge}}</div>
-			{{/if}}
-		</div>
-	</div>
+<div class='messenger__home-sidebar-chats-chat-avatar'>
+  <img src='{{avatar}}' alt='{{title}}' />
+</div>
+<div class='messenger__home-sidebar-chats-chat-content'>
+  <div class='messenger__home-sidebar-chats-chat-title'>
+    <div class='messenger__home-sidebar-chats-chat-name'>{{title}}</div>
+    <div class='messenger__home-sidebar-chats-chat-date'>{{time}}</div>
+  </div>
+  <div class='messenger__home-sidebar-chats-chat-info'>
+    <div class='messenger__home-sidebar-chats-chat-text'>
+      {{#if last_message}}
+        {{last_message.content}}
+      {{else}}
+        Сообщений нет
+      {{/if}}</div>
+    {{#if badge}}
+      <div class='messenger__home-sidebar-chats-chat-badge'>
+        {{#if unread_count}}
+          <span class='chatItem__newMessage'>
+            {{unread_count}}
+          </span>
+        {{/if}}
+      </div>
+    {{/if}}
+  </div>
+</div>

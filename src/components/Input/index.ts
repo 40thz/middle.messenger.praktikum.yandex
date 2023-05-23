@@ -1,7 +1,7 @@
-import Component from '../../utils/Component'
+import Component from '../../modules/Component'
 import { IInput } from './types'
 
-export default class Input extends Component {
+export default class Input extends Component<IInput> {
   constructor(props: IInput) {
     super('input', props)
   }
@@ -9,7 +9,6 @@ export default class Input extends Component {
   init() {
     const input = this.element as HTMLInputElement
     input.classList.add(this.props.className)
-   // this.props.isProfile && input.classList.add('profile')
     input.name = this.props.name
     input.type = this.props.type
     input.placeholder = this.props.placeholder ? this.props.placeholder : ''
@@ -23,4 +22,7 @@ export default class Input extends Component {
     return (this.element as HTMLInputElement).value
   }
 
+  clear() {
+    return ((this.element as HTMLInputElement).value = '')
+  }
 }

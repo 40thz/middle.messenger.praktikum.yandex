@@ -1,7 +1,7 @@
-import chatcart from "../ChatCart"
+import { DefaultProps } from '../../../modules/Component/types'
+import { State } from '../../../modules/Store/types'
 
-export interface ISidebar {
-    children: {
-        chats: chatcart[]
-    }
+export interface ISidebar extends DefaultProps {
+  messenger: State['messenger']
+  children: any
 }

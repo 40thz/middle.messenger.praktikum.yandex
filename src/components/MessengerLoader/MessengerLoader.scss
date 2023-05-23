@@ -1,0 +1,21 @@
+.messenger__loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: var(--purple);
+  transition: all 0.5s;
+  z-index: 10000;
+  animation: progress 20s forwards;
+}
+
+@keyframes progress {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+  }
+}

@@ -1,8 +1,8 @@
-import Component from '../../utils/Component'
+import Component from '../../modules/Component'
 import { IButton } from './types'
 import template from './Button.hbs'
 
-class Button extends Component {
+class Button extends Component<IButton> {
   constructor(props: IButton) {
     super('button', props)
   }

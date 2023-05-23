@@ -1,5 +1,5 @@
 import Button from '../Button'
-import Component from '../../utils/Component'
+import Component from '../../modules/Component'
 import Input from '../Input'
 import btnUpload from './btnUpload'
 import template from './FileUploadForm.hbs'
@@ -18,9 +18,10 @@ class FileUploadForm extends Component {
       hidden: true,
       events: {
         change: (e) => {
+          const btnUpload: btnUpload = this.children.btnUpload as btnUpload
           const file = e.target.files[0]
           console.log(file)
-          this.children.btnUpload.setProps({
+          btnUpload.setProps({
             value: file.name,
           })
         },
@@ -32,7 +33,9 @@ class FileUploadForm extends Component {
       events: {
         click: (e) => {
           e.preventDefault()
-          this.children.input.element.click()
+          const input: Input = this.children.input as Input
+
+          input.element.click()
         },
       },
     })

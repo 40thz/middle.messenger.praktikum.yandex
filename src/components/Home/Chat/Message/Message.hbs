@@ -1,9 +1,10 @@
 {{#if value}}
-<p>
-	{{value}}
-</p>
+  <h4>{{name}}</h4>
+  <p>
+    {{value}}
+  </p>
 {{/if}}
 {{#if img}}
-<img src={{img}} alt='' />
+  <img src={{img}} alt='Изображение' />
 {{/if}}
-<div class='messenger__home-content-chat-message-date'>11:56</div>
+<div class='messenger__home-content-chat-message-date'>{{time}}</div>
