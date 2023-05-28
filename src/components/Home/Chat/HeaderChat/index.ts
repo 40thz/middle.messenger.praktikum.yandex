@@ -6,11 +6,11 @@ import { IHeaderChat } from './types'
 import Modal from '../../../Modal'
 import UserControl from '../UserControl'
 import chatController from '../../../../controllers/chat.controller'
-import dropDownIcon from '../../../../../static/Home/Chat/headerIcon.svg'
-import icon1 from '../../../../../static/Home/Chat/addIcon.svg'
-import icon2 from '../../../../../static/Home/Chat/removeIcon.svg'
+import dropDownIcon from '../../../../static/Home/Chat/headerIcon.svg'
+import icon1 from '../../../../static/Home/Chat/addIcon.svg'
+import icon2 from '../../../../static/Home/Chat/removeIcon.svg'
 import template from './HeaderChat.hbs'
-import { withStore } from '../../../../hoc/withStore'
+import { withStore } from '../../../../hock/withStore'
 
 class HeaderChatBase extends Component<IHeaderChat> {
   constructor(props: IHeaderChat) {

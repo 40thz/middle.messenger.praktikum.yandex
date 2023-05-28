@@ -8,7 +8,7 @@ import chatController from '../../../../controllers/chat.controller'
 import { debounce } from '../../../../utils/debounce'
 import template from './UserControl.hbs'
 import userService from '../../../../services/user.service'
-import { withStore } from '../../../../hoc/withStore'
+import { withStore } from '../../../../hock/withStore'
 
 class UserControlBase extends Component<IUserControl> {
   constructor(props: IUserControl) {
@@ -91,7 +91,7 @@ class UserControlBase extends Component<IUserControl> {
     })
   }
 
-  componentDidUpdate(oldProps: IUserControl, newProps: IUserControl): boolean {
+  componentDidUpdate(_: IUserControl, newProps: IUserControl): boolean {
     const users = newProps.users
 
     if (users) {

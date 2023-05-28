@@ -6,7 +6,7 @@ import { IUserListChat } from './types'
 import UserCart from '../../../UserCart'
 import chatController from '../../../../controllers/chat.controller'
 import template from './UserListChat.hbs'
-import { withStore } from '../../../../hoc/withStore'
+import { withStore } from '../../../../hock/withStore'
 
 class UserListChatBase extends Component<IUserListChat> {
   constructor(props: IUserListChat) {
@@ -35,10 +35,7 @@ class UserListChatBase extends Component<IUserListChat> {
     })
   }
 
-  protected componentDidUpdate(
-    oldProps: IUserListChat,
-    newProps: IUserListChat
-  ) {
+  protected componentDidUpdate(_: IUserListChat, newProps: IUserListChat) {
     this.children.users = this.generateUserChatList(newProps.users)
 
     return true

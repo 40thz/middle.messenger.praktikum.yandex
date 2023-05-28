@@ -1,6 +1,6 @@
 import Component from '../../modules/Component'
 import Link from '../../components/Link'
-import router from '../../modules/Router/router'
+import router from '../../modules/Router'
 import template from './NotFound.hbs'
 
 export default class NotFound extends Component {

@@ -12,9 +12,7 @@ class MessagesController {
 
     const { user } = store.getState()
 
-    const transport = new WSTransport(
-      `wss://ya-praktikum.tech/ws/chats/${user.data.id}/${id}/${token}`
-    )
+    const transport = new WSTransport(`wss://ya-praktikum.tech/ws/chats/${user.data.id}/${id}/${token}`)
 
     await transport.connect()
 

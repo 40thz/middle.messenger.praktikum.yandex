@@ -76,11 +76,9 @@ class Component<Props extends DefaultProps = any> {
       return
     }
 
-    Object.entries(events as Record<string, () => void>).forEach(
-      ([event, listener]) => {
-        this._element!.addEventListener(event, listener)
-      }
-    )
+    Object.entries(events as Record<string, () => void>).forEach(([event, listener]) => {
+      this._element!.addEventListener(event, listener)
+    })
   }
 
   _registerEvents(eventBus: EventBus) {
@@ -167,9 +165,7 @@ class Component<Props extends DefaultProps = any> {
   }
 
   private _replaceStub(fragment: HTMLTemplateElement, child: Component) {
-    const stub: HTMLElement | null = fragment.content.querySelector(
-      `[data-id="${child.id}"]`
-    )
+    const stub: HTMLElement | null = fragment.content.querySelector(`[data-id="${child.id}"]`)
     if (!stub) {
       return
     }
@@ -180,21 +176,15 @@ class Component<Props extends DefaultProps = any> {
   protected compile(template: (props: Props) => string, props: Props) {
     const propsAndStubs: Props = { ...props }
 
-    Object.entries(this.children).forEach(
-      ([name, child]: [string, Component | Component[]]) => {
-        if (Array.isArray(child)) {
-          propsAndStubs[name] = child.map(
-            (childEl: Component) => `<div data-id="${childEl.id}"></div>`
-          )
-        } else {
-          propsAndStubs[name] = `<div data-id="${child.id}"></div>`
-        }
+    Object.entries(this.children).forEach(([name, child]: [string, Component | Component[]]) => {
+      if (Array.isArray(child)) {
+        propsAndStubs[name] = child.map((childEl: Component) => `<div data-id="${childEl.id}"></div>`)
+      } else {
+        propsAndStubs[name] = `<div data-id="${child.id}"></div>`
       }
-    )
+    })
 
-    const fragment = this._createDocumentElement(
-      'template'
-    ) as HTMLTemplateElement
+    const fragment = this._createDocumentElement('template') as HTMLTemplateElement
     fragment.innerHTML = template(propsAndStubs)
 
     Object.values(this.children).forEach((child: Component | Component[]) => {

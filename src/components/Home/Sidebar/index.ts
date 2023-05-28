@@ -4,7 +4,7 @@ import { ISidebar } from './types'
 import Search from '../Search'
 import chatController from '../../../controllers/chat.controller'
 import template from './SideBar.hbs'
-import { withStore } from '../../../hoc/withStore'
+import { withStore } from '../../../hock/withStore'
 
 class BaseSidebar extends Component<ISidebar> {
   constructor(props: ISidebar) {

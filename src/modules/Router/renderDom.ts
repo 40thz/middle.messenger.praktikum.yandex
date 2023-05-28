@@ -1,6 +1,4 @@
-// import { error, home, notFound, profile, signin, signup } from '../pages'
-
-import Component from './src/modules/Component'
+import Component from '../Component'
 
 export function render(query: string, block: Component) {
   const root = document.querySelector(query)

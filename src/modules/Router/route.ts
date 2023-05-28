@@ -1,17 +1,18 @@
 import Component from '../Component'
+import { Notification } from '../../components/Notification'
 import authController from '../../controllers/auth.controller'
-import { render } from '../../../renderDom'
-import router from './router'
+import { render } from './renderDom'
+import router from '.'
 
 class Route {
   private block: Component | null = null
 
   constructor(
     private pathname: string,
-    private readonly blockClass: typeof Component,
+    private readonly blockClass: typeof Component | any,
     private readonly query: string,
     private readonly isProtected?: boolean
-  ) { }
+  ) {}
 
   leave() {
     this.block = null
@@ -37,7 +38,9 @@ class Route {
     if (!this.block) {
       if (this.isProtected) this.chechAuth()
 
-      this.block = new this.blockClass()
+      const notification = new Notification({})
+
+      this.block = new this.blockClass({ notification })
 
       render(this.query, this.block)
       return

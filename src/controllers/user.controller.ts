@@ -2,7 +2,8 @@ import API, { UserService } from '../services/user.service'
 import { IEditPasswordData } from '../services/user.service/types'
 import { IUser } from '../services/auth.service/types'
 import authController from './auth.controller'
-import router from '../modules/Router/router'
+import router from '../modules/Router'
+import { setNotification } from '../utils/setNotification'
 
 class AuthController {
   private readonly api: UserService
@@ -16,8 +17,12 @@ class AuthController {
       this.api.update(data)
 
       router.go('/profile')
-    } catch (e: any) {
+
+      setNotification({ value: 'Профиль успешно обновлен', type: 'succes' })
+    } catch (e) {
       console.error(e)
+
+      setNotification({ value: `Что то пошло не так...`, type: 'error' })
     }
   }
 
@@ -26,8 +31,12 @@ class AuthController {
       this.api.editPassword(data)
 
       router.go('/profile')
-    } catch (e: any) {
+
+      setNotification({ value: 'Пароль успешно обновлен', type: 'succes' })
+    } catch (e) {
       console.error(e)
+
+      setNotification({ value: `Что то пошло не так...`, type: 'error' })
     }
   }
 
@@ -36,8 +45,12 @@ class AuthController {
       await this.api.updateAvatar(formdata)
 
       authController.fetchUser()
+
+      setNotification({ value: 'Изображение профиля успешно обновлено', type: 'succes' })
     } catch (e) {
       console.error(e)
+
+      setNotification({ value: `Что то пошло не так...`, type: 'error' })
     }
   }
 }

@@ -8,13 +8,13 @@ import { IEditPasswordData } from '../../services/user.service/types'
 import { PASSWORD_INPUTS } from '../../constants/Profile'
 import RoundBtn from '../../components/RoundBtn'
 
-import router from '../../modules/Router/router'
+import router from '../../modules/Router'
 
 import template from '../Profile/Profile.hbs'
 
 import userController from '../../controllers/user.controller'
 
-import { withStore } from '../../hoc/withStore'
+import { withStore } from '../../hock/withStore'
 
 class ChangePassword extends Component {
   constructor(props) {
@@ -56,9 +56,7 @@ class ChangePassword extends Component {
       },
 
       children: {
-        labels: PASSWORD_INPUTS.map(
-          (input) => new Label({ ...input, isProfile: true, disabled: false })
-        ),
+        labels: PASSWORD_INPUTS.map((input) => new Label({ ...input, isProfile: true, disabled: false })),
         actions: [],
         button: new Button({
           value: 'Сохронить',

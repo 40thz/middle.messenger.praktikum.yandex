@@ -1,7 +1,7 @@
 import Component from '../../../modules/Component'
 import Input from '../../Input'
 import chatController from '../../../controllers/chat.controller'
-import template from './ChangeInput.hbs'
+import template from './ChangeAvatarZone.hbs'
 import userController from '../../../controllers/user.controller'
 
 class ChnageInput extends Component {

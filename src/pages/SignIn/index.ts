@@ -6,13 +6,14 @@ import Label from '../../components/Label'
 import Link from '../../components/Link'
 import { SIGNIN_INPUTS } from '../../constants/SignIn'
 import authController from '../../controllers/auth.controller'
-import router from '../../modules/Router/router'
+import router from '../../modules/Router'
 import template from './SignIn.hbs'
 
 class SignIn extends Component {
-  constructor() {
+  constructor(props) {
     super('section', {
       title: 'Авторизация',
+      ...props,
     })
   }
 
@@ -24,8 +25,10 @@ class SignIn extends Component {
       events: {
         submit: (e) => this.onSubmit(e),
       },
+
       children: {
         labels: SIGNIN_INPUTS.map((input) => new Label(input)),
+
         actions: [
           new Button({
             value: 'Войти',

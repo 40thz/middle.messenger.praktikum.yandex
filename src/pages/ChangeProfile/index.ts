@@ -7,10 +7,10 @@ import Label from '../../components/Label'
 import { IUser } from '../../services/auth.service/types'
 import { PROFILE_INPUTS } from '../../constants/Profile'
 import RoundBtn from '../../components/RoundBtn'
-import router from '../../modules/Router/router'
+import router from '../../modules/Router'
 import template from '../Profile/Profile.hbs'
 import userController from '../../controllers/user.controller'
-import { withStore } from '../../hoc/withStore'
+import { withStore } from '../../hock/withStore'
 
 class ChangeProfile extends Component {
   constructor(props) {

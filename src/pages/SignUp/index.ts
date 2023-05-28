@@ -6,7 +6,7 @@ import Label from '../../components/Label'
 import Link from '../../components/Link'
 import { SIGNUP_INPUTS } from '../../constants/SignUp'
 import authController from '../../controllers/auth.controller'
-import router from '../../modules/Router/router'
+import router from '../../modules/Router'
 import template from './SignUp.hbs'
 
 class SignUp extends Component {

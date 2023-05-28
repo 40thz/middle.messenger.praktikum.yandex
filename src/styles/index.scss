@@ -1,30 +1,31 @@
-@import url('./vars.scss');
-@import url('./fonts.scss');
-@import url('./global.scss');
+@use './vars.scss';
+@use './fonts.scss';
+@use './global.scss';
 
-@import url('../components/Input/Input.scss');
-@import url('../components/Button/Button.scss');
-@import url('../components/Link/Link.scss');
-@import url('../components/RoundBtn/RoundBtn.scss');
+@use '../components/Input/Input.scss';
+@use '../components/Button/Button.scss';
+@use '../components/Link/Link.scss';
+@use '../components/RoundBtn/RoundBtn.scss';
 
 //UI
-@import url('../styles/ui/dropdown.scss');
-@import url('../styles/ui/modal.scss');
-@import url('../styles/ui/modal.scss');
-@import url('../components/MessengerLoader/MessengerLoader.scss');
+@use '../styles/ui/dropdown.scss';
+@use '../styles/ui/modal.scss';
+
+@use '../components/MessengerLoader/MessengerLoader.scss';
+@use '../components/Notification/Notification.scss';
 
 //404
-@import url('../pages/NotFound/NotFound.scss');
+@use '../pages/NotFound/NotFound.scss';
 
 //Home
-@import url('../pages/Home/Home.scss');
-@import url('../components/Home/Search/Search.scss');
-@import url('../components/Home/ChatCart/ChatCart.scss');
-@import url('../components/Home/Chat/Chat.scss');
-@import url('../components/Home/Chat/HeaderChat/HeaderChat.scss');
-@import url('../components/Home/Chat/Message/Message.scss');
-@import url('../components/Home/Chat/Sendmessage/Sendmessage.scss');
-@import url('../components/UserCart/UserCart.scss');
+@use '../pages/Home/Home.scss';
+@use '../components/Home/Search/Search.scss';
+@use '../components/Home/ChatCart/ChatCart.scss';
+@use '../components/Home/Chat/Chat.scss';
+@use '../components/Home/Chat/HeaderChat/HeaderChat.scss';
+@use '../components/Home/Chat/Message/Message.scss';
+@use '../components/Home/Chat/SendmessageForm/Sendmessage.scss';
+@use '../components/UserCart/UserCart.scss';
 
 //Profile
-@import url('../pages/Profile/Profile.scss');
+@use '../pages/Profile/Profile.scss';
