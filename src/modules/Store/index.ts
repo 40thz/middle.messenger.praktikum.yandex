@@ -1,37 +1,14 @@
 import { EventBus } from '../eventBus'
-import { State } from './types'
+
 import { set } from '../../utils/helpers'
+import { state } from './state'
 
 export enum StoreEvents {
   Updated = 'updated',
 }
 
 export class Store extends EventBus {
-  private state: State = {
-    user: {
-      data: {
-        id: 0,
-        first_name: '',
-        second_name: '',
-        display_name: '',
-        login: '',
-        email: '',
-        phone: '',
-        avatar: '',
-      },
-      error: '',
-      isLoading: false,
-    },
-
-    messenger: {
-      isLoading: false,
-      activeChat: null,
-      chats: [],
-      users: [],
-      messages: {},
-      isAdmin: false,
-    },
-  }
+  private state = { ...state }
 
   public set(keypath: string, data: unknown) {
     try {

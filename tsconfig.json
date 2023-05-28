@@ -1,17 +1,14 @@
 {
-    "compilerOptions": {
-        "target": "es6",
-        "moduleResolution": "node",
-        "noImplicitAny": false,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
-        "sourceMap": true,
-        "strictNullChecks": false
-    },
-    "include": [
-        "**/*.ts"
-    ],
-    "exclude": [
-        "node_modules"
-    ]
+  "compilerOptions": {
+    "target": "es6",
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "sourceMap": true,
+    "strictNullChecks": false
+  },
+  "ts-node": { "files": true },
+  "include": ["**/*.ts", "server.js"],
+  "exclude": ["node_modules"]
 }

@@ -1,7 +1,8 @@
 import API, { AuthService } from '../services/auth.service'
 import { ISignIn, ISignUp } from '../services/auth.service/types'
 import messagesController from './messages.controller'
-import router from '../modules/Router/router'
+import router from '../modules/Router'
+import { setNotification } from '../utils/setNotification'
 import store from '../modules/Store'
 
 class AuthController {
@@ -18,8 +19,12 @@ class AuthController {
       await this.fetchUser()
 
       router.go('/profile')
-    } catch (e: any) {
+
+      setNotification({ value: `Добро пожаловать ${data.login}`, type: 'succes' })
+    } catch (e) {
       console.error(e)
+
+      setNotification({ value: 'Что то пошло не так...', type: 'error' })
     }
   }
 
@@ -29,9 +34,13 @@ class AuthController {
 
       router.go('/messenger')
 
+      setNotification({ value: `Добро пожаловать ${data.login}`, type: 'succes' })
+
       await this.fetchUser()
     } catch (e) {
       console.error(e)
+
+      setNotification({ value: 'Неверный логин или пароль', type: 'error' })
     }
   }
 
@@ -51,9 +60,12 @@ class AuthController {
 
       store.set('user.data', undefined)
 
+      setNotification({ value: `Сессия закрыта. До скорых встреч !`, type: 'succes' })
       router.go('/')
-    } catch (e: any) {
+    } catch (e) {
       console.error(e.message)
+
+      setNotification({ value: 'Что то пошло не так...', type: 'error' })
     }
   }
 }

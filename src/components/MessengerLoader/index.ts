@@ -1,5 +1,5 @@
 import Component from '../../modules/Component'
-import { withStore } from '../../hoc/withStore'
+import { withStore } from '../../hock/withStore'
 
 class MessengerLoaderBase extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class MessengerLoaderBase extends Component {
     this.element.classList.add('messenger__loader')
   }
 
-  componentDidUpdate(oldProps: any, newProps: any): boolean {
+  componentDidUpdate(_: any, newProps: any): boolean {
     const isLoading = newProps.isLoading
 
     if (isLoading) {

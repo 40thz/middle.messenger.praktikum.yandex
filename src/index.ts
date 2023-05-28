@@ -1,5 +1,6 @@
+import './styles/index.scss'
 import { ChangePasswordPage, ChangeProfilePage, HomePage, ProfilePage, error, notFound, signin, signup } from './pages'
-import Router from './modules/Router/router'
+import Router from './modules/Router'
 
 export enum Routes {
   HomePage = '/messenger',

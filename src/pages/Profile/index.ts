@@ -6,9 +6,9 @@ import Link from '../../components/Link'
 import { PROFILE_INPUTS } from '../../constants/Profile'
 import RoundBtn from '../../components/RoundBtn'
 import authController from '../../controllers/auth.controller'
-import router from '../../modules/Router/router'
+import router from '../../modules/Router'
 import template from './Profile.hbs'
-import { withStore } from '../../hoc/withStore'
+import { withStore } from '../../hock/withStore'
 
 class Profile extends Component<IProfilePage> {
   constructor(props: IProfilePage) {

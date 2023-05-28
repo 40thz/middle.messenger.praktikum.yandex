@@ -1,4 +1,4 @@
-import fetch from '../modules/fetch'
+import fetch from '../modules/Fetch'
 
 export default abstract class http {
   protected http: fetch
