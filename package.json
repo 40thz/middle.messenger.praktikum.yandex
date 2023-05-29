@@ -5,13 +5,16 @@
   "scripts": {
     "start": "node ./server.js",
     "lint": "eslint ./src",
-    "stylelint": "stylelint **/*.scss --fix",
+    "lint:fix": "eslint ./src --fix",
+    "stylelint": "stylelint **/*.scss",
+    "stylelint:fix": "stylelint **/*.scss --fix",
     "test": "mocha --require ts-node/register --require ./mochaSetup.js './src/**/*.test.ts'",
     "build": "webpack --mode=production --node-env=production",
     "build:dev": "webpack --mode=development",
     "build:prod": "webpack --mode=production --node-env=production",
     "watch": "webpack --watch",
-    "serve": "webpack serve"
+    "serve": "webpack serve",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "Stanislav",
@@ -31,6 +34,7 @@
     "handlebars": "4.7.7",
     "handlebars-loader": "1.7.3",
     "html-webpack-plugin": "5.5.1",
+    "husky": "^8.0.3",
     "jsdom": "22.0.0",
     "mini-css-extract-plugin": "2.7.6",
     "mocha": "10.2.0",

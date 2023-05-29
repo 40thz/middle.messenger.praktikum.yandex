@@ -1,9 +1,9 @@
+import ChnageInput from './ChangeAvatarZone'
 import Component from '../../modules/Component'
 import { IAvatar } from './types'
 import { checkAvatarUrl } from '../../utils/checkAvatarUrl'
 import template from './Avatar.hbs'
 import { withStore } from '../../hock/withStore'
-import ChnageInput from './ChangeAvatarZone'
 
 class AvatarBase extends Component<IAvatar> {
   constructor(props: IAvatar) {
