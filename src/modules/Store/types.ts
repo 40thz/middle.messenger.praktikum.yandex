@@ -2,10 +2,10 @@ import { IMessage } from '../../services/chat.service/types'
 import { IUser } from '../../services/auth.service/types'
 
 export interface State {
-  user?: {
-    data?: IUser
-    error?: string
-    isLoading?: boolean
+  user: {
+    data: IUser
+    error: string
+    isLoading: boolean
   }
 
   messenger?: {
@@ -15,6 +15,12 @@ export interface State {
     users: IChatUsers[]
     messages?: Record<number, IMessage[]>
     isAdmin: boolean
+  }
+
+  notification: {
+    type: 'error' | 'info' | 'succes'
+    content: string
+    isActive: boolean
   }
 }
 

@@ -69,14 +69,14 @@ const NEW_PASSWORD = {
   error_text: ERROR_MESSAGES.password,
 }
 
-const PASSWORD = {
-  name: 'password',
-  type: 'password',
-  label: 'Пароль',
-  required: true,
-  regex: REGEXES.password,
-  error_text: ERROR_MESSAGES.password,
-}
+// const PASSWORD = {
+//   name: 'password',
+//   type: 'password',
+//   label: 'Пароль',
+//   required: true,
+//   regex: REGEXES.password,
+//   error_text: ERROR_MESSAGES.password,
+// }
 
 const REPEAT_PASSWORD = {
   name: 'repeatPassword',
@@ -87,13 +87,6 @@ const REPEAT_PASSWORD = {
   error_text: ERROR_MESSAGES.password,
 }
 
-export const PROFILE_INPUTS = [
-  EMAIL,
-  LOGIN,
-  FIRST_NAME,
-  SECOND_NAME,
-  DISPLAY_NAME,
-  PHONE,
-]
+export const PROFILE_INPUTS = [EMAIL, LOGIN, FIRST_NAME, SECOND_NAME, DISPLAY_NAME, PHONE]
 
 export const PASSWORD_INPUTS = [OLD_PASSWORD, NEW_PASSWORD, REPEAT_PASSWORD]

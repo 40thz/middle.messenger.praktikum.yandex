@@ -4,4 +4,5 @@ export interface IRouter {
   pathname: string
   component: typeof Component
   isProtected?: boolean
+  params?: any
 }

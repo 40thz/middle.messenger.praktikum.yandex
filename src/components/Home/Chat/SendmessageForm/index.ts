@@ -6,10 +6,10 @@ import Input from '../../../Input'
 import Modal from '../../../Modal'
 import RoundBtn from '../../../RoundBtn'
 
-import dropDownIcon from '../../../../../static/Home/Chat/icon.svg'
-import fileIcon from '../../../../../static/Home/Sendmessage/fileIcon.svg'
-import locationIcon from '../../../../../static/Home/Sendmessage/locationIcon.svg'
-import photoIcon from '../../../../../static/Home/Sendmessage/photoIcon.svg'
+import dropDownIcon from '../../../../static/Home/Chat/icon.svg'
+import fileIcon from '../../../../static/Home/Sendmessage/fileIcon.svg'
+import locationIcon from '../../../../static/Home/Sendmessage/locationIcon.svg'
+import photoIcon from '../../../../static/Home/Sendmessage/photoIcon.svg'
 
 import template from './Sendmessage.hbs'
 

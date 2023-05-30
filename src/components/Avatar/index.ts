@@ -1,9 +1,9 @@
-import ChnageInput from './ChangeInput'
+import ChnageInput from './ChangeAvatarZone'
 import Component from '../../modules/Component'
 import { IAvatar } from './types'
 import { checkAvatarUrl } from '../../utils/checkAvatarUrl'
 import template from './Avatar.hbs'
-import { withStore } from '../../hoc/withStore'
+import { withStore } from '../../hock/withStore'
 
 class AvatarBase extends Component<IAvatar> {
   constructor(props: IAvatar) {
@@ -12,11 +12,7 @@ class AvatarBase extends Component<IAvatar> {
 
   init() {
     this.props.img = checkAvatarUrl(this.props.img)
-
-    this.children.changeInput = new ChnageInput({
-      isProfile: this.props.isProfile,
-      chatID: this.props.chatID,
-    })
+    this.children.changeInput = new ChnageInput({})
   }
 
   render() {

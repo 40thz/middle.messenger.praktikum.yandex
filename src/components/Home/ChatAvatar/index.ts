@@ -4,7 +4,7 @@ import Modal from '../../Modal'
 import { UserListChat } from '../Modal/UserListChat'
 import { checkAvatarUrl } from '../../../utils/checkAvatarUrl'
 import template from './ChatAvatar.hbs'
-import { withStore } from '../../../hoc/withStore'
+import { withStore } from '../../../hock/withStore'
 
 class ChatAvatarBase extends Component<IChatAvatar> {
   constructor(props: IChatAvatar) {

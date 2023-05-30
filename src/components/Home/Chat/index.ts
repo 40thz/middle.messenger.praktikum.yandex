@@ -4,11 +4,11 @@ import HeaderChat from './HeaderChat'
 import { IChat } from './types'
 import Input from '../../Input'
 import Message from '../Message'
-import Sendmessage from './Sendmessage'
+import Sendmessage from './SendmessageForm'
 import { isEqual } from '../../../utils/isEqual'
 import messagesController from '../../../controllers/messages.controller'
 import template from './Chat.hbs'
-import { withStore } from '../../../hoc/withStore'
+import { withStore } from '../../../hock/withStore'
 
 class ChatBase extends Component<IChat> {
   constructor(props: IChat) {
@@ -63,6 +63,8 @@ class ChatBase extends Component<IChat> {
       })
     }
     this.children.chatIsNotFound = new Message({})
+
+    console.log(this.props)
     return this.compile(template, { ...this.props })
   }
 }

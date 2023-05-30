@@ -6,8 +6,8 @@ import Modal from '../../Modal'
 import UserControl from '../Chat/UserControl'
 import chatController from '../../../controllers/chat.controller'
 import { debounce } from '../../../utils/debounce'
-import dropDownIcon from '../../../../static/Home/Search/profile.svg'
-import router from '../../../modules/Router/router'
+import dropDownIcon from '../../../static/Home/Search/profile.svg'
+import router from '../../../modules/Router'
 import template from './Search.hbs'
 
 class Search extends Component {

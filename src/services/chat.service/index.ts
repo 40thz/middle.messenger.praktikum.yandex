@@ -1,5 +1,5 @@
 import { Chat, IChatUsers } from '../../modules/Store/types'
-import { IUser } from '../auth.service/types'
+
 import http from '../../http'
 
 export class ChatService extends http {

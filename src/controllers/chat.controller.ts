@@ -1,6 +1,7 @@
 import API, { ChatService } from '../services/chat.service'
 import { Chat } from '../modules/Store/types'
 import messagesController from './messages.controller'
+import { setNotification } from '../utils/setNotification'
 import store from '../modules/Store'
 import wsController from './messages.controller'
 
@@ -40,7 +41,9 @@ class ChatsController {
 
       return data
     } catch (e) {
-      console.log(e)
+      console.error(e)
+
+      setNotification({ value: 'Что то пошло не так...', type: 'error' })
     }
   }
 
@@ -62,7 +65,9 @@ class ChatsController {
 
         await wsController.connect(chat.id, res.token)
       } catch (e) {
-        console.log(e)
+        console.error(e)
+
+        setNotification({ value: 'Что то пошло не так...', type: 'error' })
       }
     })
   }
@@ -74,8 +79,12 @@ class ChatsController {
       const users = await this.getChatUsers(chatID)
 
       store.set('messenger.users', users)
+
+      setNotification({ value: 'Пользователи успешно удалены', type: 'succes' })
     } catch (e) {
-      console.log(e)
+      console.error(e)
+
+      setNotification({ value: 'Что то пошло не так...', type: 'error' })
     }
   }
 
@@ -86,8 +95,10 @@ class ChatsController {
       const users = await this.getChatUsers(chatID)
 
       store.set('messenger.users', users)
+
+      setNotification({ value: 'Пользователи успешно добавлены', type: 'succes' })
     } catch (e) {
-      console.log(e)
+      console.error(e)
     }
   }
 
@@ -96,8 +107,12 @@ class ChatsController {
       await this.api.changeChatAvatar(formData)
 
       this.fetchChats()
+
+      setNotification({ value: 'Изображение чата успешно обновлено', type: 'succes' })
     } catch (e) {
-      console.log(e)
+      console.error(e)
+
+      setNotification({ value: 'Что то пошло не так...', type: 'error' })
     }
   }
 
@@ -108,8 +123,12 @@ class ChatsController {
       this.fetchChats()
 
       this.setSelectChat(id)
+
+      setNotification({ value: `Чат "${title}" успешно создан`, type: 'succes' })
     } catch (e) {
-      console.log(e)
+      console.error(e)
+
+      setNotification({ value: 'Что то пошло не так...', type: 'error' })
     }
   }
 
@@ -120,8 +139,12 @@ class ChatsController {
       this.fetchChats()
 
       store.set('messenger.activeChat', null)
+
+      setNotification({ value: `Чат успешно удален`, type: 'succes' })
     } catch (e) {
-      console.log(e)
+      console.error(e)
+
+      setNotification({ value: 'Что то пошло не так...', type: 'error' })
     }
   }
 

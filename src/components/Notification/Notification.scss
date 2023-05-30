@@ -1,0 +1,38 @@
+.messenger__notification {
+  transition: all 1s;
+  position: absolute;
+  top: 4%;
+  right: 2%;
+  transform: translateY(50px);
+  width: 300px;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  border-radius: 15px;
+  padding: 0 20px;
+  z-index: 10000;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  &.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0px);
+  }
+
+  &.error {
+    color: #fff;
+    background: var(--red);
+  }
+
+  &.succes {
+    color: #fff;
+    background: #337d23;
+  }
+
+  &.info {
+    color: #fff;
+    background: #0b86d2;
+  }
+}
