@@ -118,7 +118,7 @@
 
 - Переезд на webpack
 - Внедрение тестов
-  - Mocka
+  - Mocha
   - Chai
 - Внедрение Docker'a
 - Настройка pre-commit с помощью husky
